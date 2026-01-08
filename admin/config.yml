@@ -87,6 +87,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
               - label: "Items"
                 name: "items"
                 widget: "list"
@@ -98,6 +99,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text", required: false }
               - label: "Items"
                 name: "items"
                 widget: "list"
@@ -113,6 +115,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text", required: false }
               - label: "Items"
                 name: "items"
                 widget: "list"
@@ -157,6 +160,8 @@ collections:
               - { label: "Subtitle", name: "subtitle", widget: "text" }
               - { label: "CTA Text", name: "ctaText", widget: "text" }
               - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Contact Note", name: "note", widget: "string", required: false }
+              - { label: "CMS Note", name: "cmsNote", widget: "string", required: false }
               - { label: "Email", name: "email", widget: "string", required: false }
               - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
               - { label: "Address", name: "address", widget: "string", required: false }

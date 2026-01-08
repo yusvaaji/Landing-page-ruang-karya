@@ -1,0 +1,16 @@
+{
+  "name": "Ruang Karya Teknologi",
+  "short_name": "Ruang Karya",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#071726",
+  "theme_color": "#0b2a42",
+  "icons": [
+    {
+      "src": "/src/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+
