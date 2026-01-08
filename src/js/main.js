@@ -30,6 +30,26 @@ function setLink(rel, href) {
   el.setAttribute("href", href || "");
 }
 
+function safeUrl(raw) {
+  const value = String(raw || "").trim();
+  if (!value) return "#";
+  if (value.startsWith("#")) return value;
+  if (value.startsWith("/")) return value;
+  if (/^https?:\/\//i.test(value)) return value;
+  if (/^mailto:/i.test(value)) return value;
+  if (/^tel:/i.test(value)) return value;
+  return "#";
+}
+
+function safeSrc(raw) {
+  const value = String(raw || "").trim();
+  if (!value) return "";
+  if (value.startsWith("/")) return value;
+  if (/^https?:\/\//i.test(value)) return value;
+  if (/^data:image\//i.test(value)) return value;
+  return "";
+}
+
 function text(el, value) {
   if (typeof value === "string") el.textContent = value;
 }
@@ -47,7 +67,15 @@ function bindSimple(data) {
 
   document.querySelectorAll("[data-bind-href]").forEach((el) => {
     const value = getByPath(data, el.getAttribute("data-bind-href"));
-    if (typeof value === "string") el.setAttribute("href", value);
+    if (typeof value === "string") el.setAttribute("href", safeUrl(value));
+  });
+
+  document.querySelectorAll("[data-bind-src]").forEach((el) => {
+    const value = getByPath(data, el.getAttribute("data-bind-src"));
+    if (typeof value === "string") {
+      const src = safeSrc(value);
+      if (src) el.setAttribute("src", src);
+    }
   });
 }
 
@@ -60,7 +88,7 @@ function replaceList(container, items, renderItem) {
 function el(tag, className, html) {
   const node = document.createElement(tag);
   if (className) node.className = className;
-  if (html !== undefined) node.innerHTML = html;
+  if (html !== undefined) node.textContent = String(html);
   return node;
 }
 
@@ -80,9 +108,14 @@ function bindLists(data) {
         // if checklist structure exists (flex + icon), match it
         const li = document.createElement("li");
         li.className = "flex gap-3";
-        li.innerHTML =
-          `<span class="mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-sky/15 text-sky">✓</span>` +
-          `<span>${String(point)}</span>`;
+        const icon = document.createElement("span");
+        icon.className =
+          "mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-sky/15 text-sky";
+        icon.textContent = "✓";
+        const span = document.createElement("span");
+        span.textContent = String(point);
+        li.appendChild(icon);
+        li.appendChild(span);
         return li;
       });
     } else if (path.endsWith("missions")) {
@@ -181,7 +214,7 @@ function bindLists(data) {
       const link = document.createElement("a");
       link.className = "mt-4 inline-flex text-sm font-semibold text-sky group-hover:brightness-110";
       link.textContent = "Baca →";
-      link.href = a?.href || "#";
+      link.href = safeUrl(a?.href || "#");
       card.appendChild(link);
       return card;
     });
@@ -220,6 +253,7 @@ function updateSeo(data) {
   setMeta("og:title", title, true);
   setMeta("og:description", description, true);
   setMeta("og:image", ogImage, true);
+  setMeta("og:url", document.querySelector('link[rel="canonical"]')?.getAttribute("href") || "https://ruangkarya.id/", true);
   setMeta("twitter:title", title);
   setMeta("twitter:description", description);
   setMeta("twitter:image", ogImage);
@@ -228,20 +262,33 @@ function updateSeo(data) {
   const canon = document.querySelector('link[rel="canonical"]')?.getAttribute("href") || "";
   if (!canon) setLink("canonical", "/");
 
-  // JSON-LD updates (best-effort)
-  const orgLdEl = document.getElementById("ld-org");
-  if (orgLdEl) {
-    const org = {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: getByPath(data, "brand.companyName") || "Ruang Karya Teknologi",
-      legalName: getByPath(data, "brand.legalName") || undefined,
-      email: getByPath(data, "contact.email") || undefined,
-      url: canon || "https://ruangkarya.id/",
-      logo: ogImage
-    };
-    orgLdEl.textContent = JSON.stringify(org);
-  }
+  // JSON-LD (injected via external JS so we can keep CSP strict)
+  const existing = document.querySelectorAll('script[type="application/ld+json"][data-rkt]');
+  existing.forEach((n) => n.remove());
+
+  const org = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: getByPath(data, "brand.companyName") || "Ruang Karya Teknologi",
+    legalName: getByPath(data, "brand.legalName") || undefined,
+    email: getByPath(data, "contact.email") || undefined,
+    url: canon || "https://ruangkarya.id/",
+    logo: ogImage
+  };
+  const site = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: getByPath(data, "brand.companyName") || "Ruang Karya Teknologi",
+    url: canon || "https://ruangkarya.id/"
+  };
+
+  [org, site].forEach((obj) => {
+    const s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.setAttribute("data-rkt", "1");
+    s.textContent = JSON.stringify(obj);
+    document.head.appendChild(s);
+  });
 }
 
 async function loadContent() {

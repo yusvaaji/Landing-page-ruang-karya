@@ -2,13 +2,13 @@
   "meta": {
     "title": "Ruang Karya Teknologi — Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak",
     "description": "PT Ruang Karya Teknologi adalah startup teknologi yang berfokus pada pengembangan solusi digital untuk bisnis, UMKM, dan perusahaan yang ingin melakukan transformasi digital secara efektif.",
-    "ogImage": "src/assets/logo-rkt.svg"
+    "ogImage": "/src/assets/logo-rkt.svg"
   },
   "brand": {
     "companyName": "Ruang Karya Teknologi",
     "legalName": "PT Ruang Karya Teknologi",
     "tagline": "Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak",
-    "logoPath": "src/assets/logo-rkt.svg"
+    "logoPath": "/src/assets/logo-rkt.svg"
   },
   "hero": {
     "headline": "Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak",
@@ -47,6 +47,7 @@
   },
   "values": {
     "title": "Nilai-Nilai Kami (Core Values)",
+    "subtitle": "Prinsip yang menjaga kualitas, kepercayaan, dan dampak karya kami.",
     "items": [
       { "name": "Innovation", "description": "Terus menciptakan solusi baru yang adaptif terhadap perubahan." },
       { "name": "Collaboration", "description": "Membangun sinergi kuat dengan tim, klien, dan mitra." },
@@ -57,6 +58,7 @@
   },
   "services": {
     "title": "Produk & Layanan Kami",
+    "subtitle": "Dari website hingga sistem internal—kami bantu Anda membangun fondasi digital yang rapi dan siap berkembang.",
     "items": [
       {
         "title": "Web & Application Development",
@@ -77,6 +79,7 @@
   },
   "products": {
     "title": "Produk Unggulan",
+    "subtitle": "Produk siap pakai yang bisa dikustom sesuai alur kerja bisnis Anda.",
     "items": [
       {
         "title": "Karya CRM",
@@ -127,6 +130,8 @@
     "subtitle": "Mari wujudkan solusi digital yang tepat untuk bisnis Anda.",
     "ctaText": "Hubungi kami sekarang dan jadikan teknologi sebagai penggerak pertumbuhan bisnis Anda.",
     "buttonLabel": "Hubungi Kami",
+    "note": "Respon cepat di jam kerja.",
+    "cmsNote": "Catatan: CMS membutuhkan setup backend Git (Netlify/Git Gateway atau GitHub OAuth).",
     "email": "halo@ruangkarya.id",
     "whatsapp": "+62 812-3456-7890",
     "address": "Indonesia"

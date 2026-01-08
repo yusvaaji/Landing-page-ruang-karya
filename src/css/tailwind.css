@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(143,215,255,.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(143,215,255,.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: center;
+    mask-image: radial-gradient(closest-side, rgba(0,0,0,.92), rgba(0,0,0,0));
+    -webkit-mask-image: radial-gradient(closest-side, rgba(0,0,0,.92), rgba(0,0,0,0));
+  }
+
+  .orb {
+    animation: floaty 7s ease-in-out infinite;
+  }
+
+  .orb-delay-600 {
+    animation-delay: 0.6s;
+  }
+
+  .orb-delay-1200 {
+    animation-delay: 1.2s;
+  }
+}
+

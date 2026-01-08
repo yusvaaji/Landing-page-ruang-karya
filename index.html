@@ -4,12 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0b2a42" />
+  <meta name="robots" content="index,follow" />
   <meta name="description" content="PT Ruang Karya Teknologi adalah startup teknologi yang berfokus pada pengembangan solusi digital untuk bisnis, UMKM, dan perusahaan yang ingin melakukan transformasi digital secara efektif." />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Ruang Karya Teknologi" />
   <meta property="og:description" content="Solusi digital untuk bisnis yang tumbuh dan berdampak." />
   <meta property="og:image" content="/src/assets/logo-rkt.svg" />
+  <meta property="og:url" content="https://ruangkarya.id/" />
+  <meta property="og:site_name" content="Ruang Karya Teknologi" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ruang Karya Teknologi" />
@@ -20,56 +23,22 @@
 
   <title>Ruang Karya Teknologi — Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak</title>
 
-  <!-- Tailwind CSS (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: "#071726",
-            navy: "#0b2a42",
-            deep: "#081c2d",
-            sky: "#8fd7ff",
-            glow: "#4dc3ff"
-          },
-          boxShadow: {
-            glow: "0 0 0 1px rgba(143,215,255,.22), 0 0 40px rgba(77,195,255,.18)"
-          }
-        }
-      }
-    };
-  </script>
-  <style>
-    /* minimal custom (for futuristic animated orbs/grid) */
-    .bg-grid {
-      background-image:
-        linear-gradient(to right, rgba(143,215,255,.07) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(143,215,255,.07) 1px, transparent 1px);
-      background-size: 48px 48px;
-      background-position: center;
-      mask-image: radial-gradient(closest-side, rgba(0,0,0,.92), rgba(0,0,0,0));
-      -webkit-mask-image: radial-gradient(closest-side, rgba(0,0,0,.92), rgba(0,0,0,0));
-    }
-    @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-14px) } }
-    .orb { animation: floaty 7s ease-in-out infinite; }
-  </style>
+  <!-- Favicons -->
+  <link rel="icon" href="/src/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="/src/assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="/src/assets/favicon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Tailwind (compiled locally) -->
+  <link rel="stylesheet" href="src/css/style.css" />
 </head>
 <body>
-  <!-- SEO: JSON-LD injected/updated by main.js as well -->
-  <script type="application/ld+json" id="ld-org">
-    {"@context":"https://schema.org","@type":"Organization","name":"Ruang Karya Teknologi","url":"https://ruangkarya.id/","logo":"https://ruangkarya.id/src/assets/logo-rkt.svg"}
-  </script>
-  <script type="application/ld+json" id="ld-website">
-    {"@context":"https://schema.org","@type":"WebSite","name":"Ruang Karya Teknologi","url":"https://ruangkarya.id/"}
-  </script>
-
   <a class="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:left-4 focus:top-4 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-navy focus:shadow" href="#main">Lewati ke konten</a>
 
   <header class="sticky top-0 z-50 border-b border-sky/10 bg-deep/70 backdrop-blur supports-[backdrop-filter]:bg-deep/60">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
       <a class="flex items-center gap-3" href="#top" aria-label="Ruang Karya Teknologi">
-        <img class="h-10 w-auto" src="src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="170" height="54" loading="eager" />
+        <img class="h-10 w-auto" data-bind-src="brand.logoPath" src="/src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="170" height="54" loading="eager" />
       </a>
 
       <button id="navToggle" class="inline-flex items-center justify-center rounded-xl border border-sky/15 bg-white/5 px-3 py-2 text-white md:hidden" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="site-nav">
@@ -106,7 +75,7 @@
       <div class="absolute inset-0 bg-gradient-to-br from-ink via-deep to-navy"></div>
       <div class="absolute inset-0 bg-grid opacity-80"></div>
       <div class="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-sky/20 blur-3xl orb"></div>
-      <div class="pointer-events-none absolute -right-24 top-10 h-80 w-80 rounded-full bg-glow/15 blur-3xl orb" style="animation-delay: 1.2s;"></div>
+      <div class="pointer-events-none absolute -right-24 top-10 h-80 w-80 rounded-full bg-glow/15 blur-3xl orb orb-delay-1200"></div>
 
       <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-16 md:grid-cols-2 md:pb-24 md:pt-24">
         <div>
@@ -220,7 +189,7 @@
       <div class="flex items-end justify-between gap-4">
         <div>
           <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="values.title">Nilai-Nilai Kami (Core Values)</h2>
-          <p class="mt-2 text-sm text-white/65">Prinsip yang menjaga kualitas, kepercayaan, dan dampak karya kami.</p>
+          <p class="mt-2 text-sm text-white/65" data-bind="values.subtitle">Prinsip yang menjaga kualitas, kepercayaan, dan dampak karya kami.</p>
         </div>
       </div>
       <div class="mt-8 grid gap-4 md:grid-cols-3" data-bind-cards="values.items">
@@ -235,9 +204,7 @@
       <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
         <div class="max-w-2xl">
           <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="services.title">Produk & Layanan Kami</h2>
-          <p class="mt-2 text-white/70">
-            Dari website hingga sistem internal—kami bantu Anda membangun fondasi digital yang rapi dan siap berkembang.
-          </p>
+          <p class="mt-2 text-white/70" data-bind="services.subtitle">Dari website hingga sistem internal—kami bantu Anda membangun fondasi digital yang rapi dan siap berkembang.</p>
         </div>
         <div class="mt-8 grid gap-4 md:grid-cols-3" data-bind-services="services.items">
           <article class="rounded-[26px] border border-sky/12 bg-white/5 p-6 backdrop-blur">
@@ -258,7 +225,7 @@
     <section id="products" class="mx-auto max-w-6xl px-4 py-16 md:py-20">
       <div class="max-w-2xl">
         <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="products.title">Produk Unggulan</h2>
-        <p class="mt-2 text-white/70">Produk siap pakai yang bisa dikustom sesuai alur kerja bisnis Anda.</p>
+        <p class="mt-2 text-white/70" data-bind="products.subtitle">Produk siap pakai yang bisa dikustom sesuai alur kerja bisnis Anda.</p>
       </div>
       <div class="mt-8 grid gap-4 md:grid-cols-2" data-bind-products="products.items">
         <article class="relative overflow-hidden rounded-[28px] border border-sky/12 bg-white/5 p-7 backdrop-blur">
@@ -311,7 +278,7 @@
     </section>
 
     <section id="contact" class="relative overflow-hidden border-t border-sky/10 bg-gradient-to-b from-deep/50 to-ink">
-      <div class="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-sky/15 blur-3xl orb" style="animation-delay: 0.6s;"></div>
+      <div class="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-sky/15 blur-3xl orb orb-delay-600"></div>
       <div class="mx-auto grid max-w-6xl gap-8 px-4 py-16 md:grid-cols-2 md:py-20">
         <div>
           <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="contact.title">Siap Berkolaborasi dengan Kami?</h2>
@@ -321,7 +288,7 @@
             <a class="inline-flex items-center justify-center rounded-2xl bg-sky px-6 py-3 font-semibold text-navy shadow-glow hover:brightness-110" data-bind-text="contact.buttonLabel" href="#contact">Hubungi Kami</a>
             <a class="inline-flex items-center justify-center rounded-2xl border border-sky/20 bg-white/5 px-6 py-3 font-semibold text-white/90 hover:bg-white/10" href="/admin/" title="CMS (admin)">Buka CMS</a>
           </div>
-          <p class="mt-4 text-xs text-white/55">Catatan: CMS membutuhkan setup backend Git (Netlify/Git Gateway atau GitHub OAuth).</p>
+          <p class="mt-4 text-xs text-white/55" data-bind="contact.cmsNote">Catatan: CMS membutuhkan setup backend Git (Netlify/Git Gateway atau GitHub OAuth).</p>
         </div>
         <div class="rounded-[28px] border border-sky/12 bg-white/5 p-7 backdrop-blur">
           <div class="space-y-4 text-sm">
@@ -339,7 +306,7 @@
             </div>
           </div>
           <div class="mt-6 rounded-2xl border border-sky/10 bg-deep/30 p-4 text-xs text-white/65">
-            Respon cepat di jam kerja.
+            <span data-bind="contact.note">Respon cepat di jam kerja.</span>
           </div>
         </div>
       </div>
@@ -349,7 +316,7 @@
   <footer class="border-t border-sky/10 bg-ink">
     <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 md:flex-row md:items-center md:justify-between">
       <div class="flex items-center gap-4">
-        <img class="h-10 w-auto opacity-95" src="src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="150" height="48" loading="lazy" />
+        <img class="h-10 w-auto opacity-95" data-bind-src="brand.logoPath" src="/src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="150" height="48" loading="lazy" />
         <div class="text-sm text-white/60">© <span id="year"></span> <span data-bind="footer.copyrightName">Ruang Karya Teknologi</span></div>
       </div>
       <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70" data-bind-footer-links>

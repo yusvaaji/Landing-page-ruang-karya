@@ -1,13 +1,192 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
-    <title>Ruang Karya Teknologi — CMS</title>
+    <title>Admin — Ruang Karya Teknologi</title>
+    <link rel="icon" href="/src/assets/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { color-scheme: dark; }
+      body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background: #071726; color: #fff; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+      .card { background: rgba(255,255,255,.05); border: 1px solid rgba(143,215,255,.14); border-radius: 18px; padding: 18px; }
+      .row { display: flex; gap: 12px; flex-wrap: wrap; }
+      label { display: block; font-size: 12px; color: rgba(255,255,255,.7); margin-bottom: 6px; }
+      input, textarea { width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(143,215,255,.18); background: rgba(8,28,45,.6); color: #fff; outline: none; }
+      textarea { min-height: 420px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; line-height: 1.5; }
+      button { cursor: pointer; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(143,215,255,.22); background: rgba(143,215,255,.16); color: #fff; font-weight: 700; }
+      button.primary { background: #8fd7ff; color: #0b2a42; border-color: transparent; }
+      button.ghost { background: rgba(255,255,255,.06); }
+      .muted { color: rgba(255,255,255,.65); font-size: 13px; }
+      .top { display:flex; align-items:center; justify-content:space-between; gap: 12px; margin-bottom: 16px; }
+      .badge { display:inline-flex; gap: 8px; align-items:center; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(143,215,255,.16); background: rgba(255,255,255,.05); font-size: 12px; color: rgba(255,255,255,.8); }
+      .dot { width: 8px; height: 8px; border-radius: 999px; background: #8fd7ff; box-shadow: 0 0 24px rgba(77,195,255,.35); }
+      .hidden { display: none; }
+      .actions { display:flex; gap: 10px; flex-wrap: wrap; }
+      .msg { margin-top: 10px; font-size: 13px; }
+      .ok { color: #8fd7ff; }
+      .err { color: #ff8fb1; }
+    </style>
   </head>
   <body>
-    <!-- Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
+    <div class="wrap">
+      <div class="top">
+        <div class="badge"><span class="dot"></span><span>Admin CMS (custom)</span></div>
+        <div class="actions">
+          <a class="muted" href="/" rel="noopener">← Kembali ke website</a>
+        </div>
+      </div>
+
+      <!-- Login -->
+      <section id="loginCard" class="card">
+        <h1 style="margin:0 0 6px;font-size:20px;">Login Admin</h1>
+        <p class="muted" style="margin:0 0 14px;">Masukkan password admin untuk mengubah konten landing page.</p>
+        <div class="row">
+          <div style="flex: 1 1 320px;">
+            <label for="password">Password</label>
+            <input id="password" type="password" autocomplete="current-password" />
+          </div>
+        </div>
+        <div class="actions" style="margin-top:12px;">
+          <button id="btnLogin" class="primary" type="button">Login</button>
+        </div>
+        <div id="loginMsg" class="msg"></div>
+      </section>
+
+      <!-- Editor -->
+      <section id="editorCard" class="card hidden">
+        <div class="top" style="margin:0 0 12px;">
+          <div>
+            <h2 style="margin:0;font-size:18px;">Konten Landing Page</h2>
+            <div class="muted">File: <code>content/site.json</code></div>
+          </div>
+          <div class="actions">
+            <button id="btnReload" class="ghost" type="button">Reload</button>
+            <button id="btnSave" class="primary" type="button">Save</button>
+            <button id="btnLogout" class="ghost" type="button">Logout</button>
+          </div>
+        </div>
+        <label for="json">JSON Content</label>
+        <textarea id="json" spellcheck="false"></textarea>
+        <div id="editorMsg" class="msg"></div>
+        <p class="muted" style="margin:10px 0 0;">
+          Tips: ubah teks, list, dan link. Jangan masukkan HTML/script. Sistem akan menyimpan dengan validasi dasar.
+        </p>
+      </section>
+    </div>
+
+    <script>
+      const loginCard = document.getElementById("loginCard");
+      const editorCard = document.getElementById("editorCard");
+      const loginMsg = document.getElementById("loginMsg");
+      const editorMsg = document.getElementById("editorMsg");
+      const passwordEl = document.getElementById("password");
+      const jsonEl = document.getElementById("json");
+
+      const api = {
+        me: () => fetch("/api/me", { credentials: "same-origin" }),
+        csrf: () => fetch("/api/csrf", { credentials: "same-origin" }),
+        login: (password) =>
+          fetch("/api/login", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            credentials: "same-origin",
+            body: JSON.stringify({ password })
+          }),
+        logout: () => fetch("/api/logout", { method: "POST", credentials: "same-origin" }),
+        get: () => fetch("/api/content", { credentials: "same-origin" }),
+        put: (data, csrfToken) =>
+          fetch("/api/content", {
+            method: "PUT",
+            headers: { "content-type": "application/json", "x-csrf-token": csrfToken || "" },
+            credentials: "same-origin",
+            body: JSON.stringify(data)
+          })
+      };
+
+      const setMsg = (el, ok, text) => {
+        el.className = "msg " + (ok ? "ok" : "err");
+        el.textContent = text || "";
+      };
+
+      async function ensureAuthed() {
+        const r = await api.me();
+        return r.ok;
+      }
+
+      async function showEditor() {
+        loginCard.classList.add("hidden");
+        editorCard.classList.remove("hidden");
+        await reloadJson();
+      }
+
+      async function showLogin() {
+        editorCard.classList.add("hidden");
+        loginCard.classList.remove("hidden");
+      }
+
+      async function reloadJson() {
+        editorMsg.textContent = "";
+        const r = await api.get();
+        if (!r.ok) {
+          setMsg(editorMsg, false, "Gagal load content. Pastikan kamu sudah login.");
+          return;
+        }
+        const data = await r.json();
+        jsonEl.value = JSON.stringify(data, null, 2);
+        setMsg(editorMsg, true, "Content loaded.");
+      }
+
+      async function getCsrfToken() {
+        const r = await api.csrf();
+        if (!r.ok) return "";
+        const j = await r.json();
+        return j.token || "";
+      }
+
+      document.getElementById("btnLogin").addEventListener("click", async () => {
+        setMsg(loginMsg, true, "");
+        const password = passwordEl.value || "";
+        const r = await api.login(password);
+        if (!r.ok) {
+          setMsg(loginMsg, false, "Password salah / login gagal.");
+          return;
+        }
+        setMsg(loginMsg, true, "Login berhasil.");
+        await showEditor();
+      });
+
+      document.getElementById("btnReload").addEventListener("click", reloadJson);
+
+      document.getElementById("btnSave").addEventListener("click", async () => {
+        editorMsg.textContent = "";
+        let parsed;
+        try {
+          parsed = JSON.parse(jsonEl.value);
+        } catch {
+          setMsg(editorMsg, false, "JSON tidak valid.");
+          return;
+        }
+        const csrfToken = await getCsrfToken();
+        const r = await api.put(parsed, csrfToken);
+        if (!r.ok) {
+          const t = await r.text();
+          setMsg(editorMsg, false, "Gagal save: " + t);
+          return;
+        }
+        setMsg(editorMsg, true, "Tersimpan. Refresh halaman utama untuk melihat perubahan.");
+      });
+
+      document.getElementById("btnLogout").addEventListener("click", async () => {
+        await api.logout();
+        await showLogin();
+        setMsg(loginMsg, true, "Logout.");
+      });
+
+      (async () => {
+        if (await ensureAuthed()) await showEditor();
+      })();
+    </script>
   </body>
 </html>

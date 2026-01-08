@@ -1,0 +1,25 @@
+[Unit]
+Description=Ruang Karya Teknologi Website (Node)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/ruangkarya
+ExecStart=/usr/bin/node /var/www/ruangkarya/server/index.js
+Restart=always
+RestartSec=3
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=SESSION_SECRET=replace-me
+Environment=CMS_PASSWORD_HASH=replace-me
+
+# Security hardening (basic)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/www/ruangkarya/content
+
+[Install]
+WantedBy=multi-user.target
+
