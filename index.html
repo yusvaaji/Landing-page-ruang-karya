@@ -3,48 +3,263 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ruang Karya — Landing Page</title>
+  <meta name="theme-color" content="#0b2a42">
+  <meta name="description" content="PT Ruang Karya Teknologi adalah startup teknologi yang berfokus pada pengembangan solusi digital untuk bisnis, UMKM, dan perusahaan yang ingin melakukan transformasi digital secara efektif.">
+  <title>Ruang Karya Teknologi — Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak</title>
   <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <a class="logo" href="#">Ruang Karya</a>
-      <nav class="nav">
-        <a href="#services">Layanan</a>
+  <a class="skip-link" href="#main">Lewati ke konten</a>
+
+  <header class="site-header" data-elevate>
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Ruang Karya Teknologi">
+        <img class="brand-logo" src="src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="170" height="54" loading="eager">
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav id="site-nav" class="nav" aria-label="Navigasi utama">
         <a href="#about">Tentang</a>
-        <a href="#contact">Kontak</a>
+        <a href="#services">Layanan</a>
+        <a href="#products">Produk</a>
+        <a href="#values">Nilai</a>
+        <a href="#articles">Artikel</a>
+        <a class="nav-cta" href="#contact">Hubungi</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Selamat datang di Ruang Karya</h1>
-        <p>Sebuah landing page dasar untuk memulai pengembangan.</p>
-        <a class="btn" href="#contact">Hubungi Kami</a>
+  <main id="main">
+    <section id="top" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow" data-bind="brand.companyName">Ruang Karya Teknologi</p>
+          <h1 class="hero-title" data-bind="hero.headline">Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak</h1>
+          <p class="hero-subtitle" data-bind="hero.subheadline">
+            Kami membangun website, aplikasi, dan sistem bisnis yang membantu Anda bekerja lebih efisien, tumbuh lebih cepat, dan menciptakan dampak nyata.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" data-bind-href="hero.primaryCta.href" data-bind-text="hero.primaryCta.label" href="#contact">Hubungi Kami</a>
+            <a class="btn secondary" data-bind-href="hero.secondaryCta.href" data-bind-text="hero.secondaryCta.label" href="#services">Lihat Layanan</a>
+          </div>
+          <div class="hero-highlights" aria-label="Highlight">
+            <div class="mini-card">
+              <div class="mini-card-title">Efisiensi</div>
+              <div class="mini-card-desc">Otomasi & sistem terintegrasi</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">Pertumbuhan</div>
+              <div class="mini-card-desc">Optimasi berbasis data</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">Dampak</div>
+              <div class="mini-card-desc">Solusi yang bisa dieksekusi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="grid-card">
+            <div class="grid-card-badge">Kolaborasi • Kreatif • Teknologi</div>
+            <div class="grid-card-title" data-bind="brand.tagline">Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak</div>
+            <div class="grid-card-kpis">
+              <div class="kpi">
+                <div class="kpi-num">Web</div>
+                <div class="kpi-label">Company profile & app</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-num">CRM</div>
+                <div class="kpi-label">Sales & customer service</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-num">POS</div>
+                <div class="kpi-label">UMKM & retail</div>
+              </div>
+            </div>
+          </div>
+          <div class="pattern-squares"></div>
+        </div>
       </div>
     </section>
 
-    <section id="services" class="services container">
-      <h2>Layanan</h2>
-      <p>Placeholder layanan.</p>
+    <section id="about" class="section">
+      <div class="container split">
+        <div>
+          <h2 class="section-title" data-bind="about.title">Tentang Kami</h2>
+          <div class="prose" data-bind-list="about.paragraphs">
+            <p>PT Ruang Karya Teknologi adalah perusahaan startup teknologi yang berfokus pada pengembangan solusi digital untuk bisnis, UMKM, dan perusahaan yang ingin melakukan transformasi digital secara efektif.</p>
+          </div>
+        </div>
+        <aside class="aside-card">
+          <div class="aside-title" data-bind="why.title">Mengapa Ruang Karya Teknologi?</div>
+          <ul class="checklist" data-bind-list="why.points">
+            <li>Berorientasi pada kebutuhan bisnis nyata</li>
+            <li>Solusi fleksibel dan scalable</li>
+            <li>Pendekatan kolaboratif dan transparan</li>
+            <li>Fokus pada hasil dan dampak jangka panjang</li>
+          </ul>
+        </aside>
+      </div>
     </section>
 
-    <section id="about" class="about container">
-      <h2>Tentang</h2>
-      <p>Placeholder tentang.</p>
+    <section class="section alt">
+      <div class="container grid-2">
+        <div class="card">
+          <h3 class="card-title" data-bind="visionMission.visionTitle">Visi Kami</h3>
+          <p class="card-text" data-bind="visionMission.vision">
+            Menjadi perusahaan teknologi yang inovatif dan terpercaya dalam menciptakan solusi digital bernilai tinggi untuk mendorong pertumbuhan dan transformasi di era digital.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title" data-bind="visionMission.missionTitle">Misi Kami</h3>
+          <ul class="bullet" data-bind-list="visionMission.missions">
+            <li>Mengembangkan solusi teknologi yang kreatif, relevan, dan berorientasi pada pengguna</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="contact container">
-      <h2>Kontak</h2>
-      <p>Placeholder kontak.</p>
+    <section id="values" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-bind="values.title">Nilai-Nilai Kami (Core Values)</h2>
+        </div>
+        <div class="cards" data-bind-cards="values.items">
+          <article class="card">
+            <div class="pill">Innovation</div>
+            <p class="card-text">Terus menciptakan solusi baru yang adaptif terhadap perubahan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-bind="services.title">Produk & Layanan Kami</h2>
+          <p class="section-subtitle">
+            Dari website hingga sistem internal—kami bantu Anda membangun fondasi digital yang rapi dan siap berkembang.
+          </p>
+        </div>
+        <div class="cards" data-bind-services="services.items">
+          <article class="card">
+            <h3 class="card-title">Web & Application Development</h3>
+            <p class="card-text">Kami membangun website dan aplikasi modern yang cepat, aman, dan responsif, disesuaikan dengan kebutuhan bisnis Anda.</p>
+            <ul class="bullet">
+              <li>Company profile</li>
+              <li>Sistem internal perusahaan</li>
+              <li>Aplikasi bisnis & startup</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-bind="products.title">Produk Unggulan</h2>
+          <p class="section-subtitle">Produk siap pakai yang bisa dikustom sesuai alur kerja bisnis Anda.</p>
+        </div>
+        <div class="cards" data-bind-products="products.items">
+          <article class="card featured">
+            <div class="card-top">
+              <h3 class="card-title">Karya CRM</h3>
+              <span class="chip">Cloud</span>
+            </div>
+            <p class="card-text">Sistem manajemen pelanggan berbasis cloud untuk meningkatkan produktivitas tim sales dan customer service.</p>
+            <ul class="bullet">
+              <li>Data pelanggan terpusat</li>
+              <li>Monitoring pipeline penjualan</li>
+              <li>Laporan performa real-time</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-bind="testimonials.title">Testimoni Klien</h2>
+          <p class="section-subtitle" data-bind="testimonials.note">Bagian ini bisa diisi dengan kutipan klien, logo perusahaan, atau studi kasus singkat.</p>
+        </div>
+        <div class="quotes" data-bind-testimonials="testimonials.items">
+          <figure class="quote">
+            <blockquote>“Tim Ruang Karya sangat responsif dan kolaboratif. Sistem yang dibangun membantu operasional kami jadi jauh lebih rapi.”</blockquote>
+            <figcaption>— Nama Klien, Jabatan / Perusahaan</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="articles" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-bind="articles.title">Artikel & Insight</h2>
+          <p class="section-subtitle" data-bind="articles.subtitle">
+            Temukan artikel, insight, dan panduan seputar teknologi, bisnis, dan transformasi digital dari tim Ruang Karya Teknologi.
+          </p>
+        </div>
+        <div class="cards" data-bind-articles="articles.items">
+          <article class="card link-card">
+            <h3 class="card-title">Transformasi Digital untuk UMKM: Mulai dari Mana?</h3>
+            <p class="card-text">Panduan ringkas menentukan prioritas digitalisasi yang realistis dan berdampak.</p>
+            <a class="card-link" href="#">Baca →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container contact-inner">
+        <div>
+          <h2 class="section-title" data-bind="contact.title">Siap Berkolaborasi dengan Kami?</h2>
+          <p class="section-subtitle" data-bind="contact.subtitle">Mari wujudkan solusi digital yang tepat untuk bisnis Anda.</p>
+          <p class="prose" data-bind="contact.ctaText">Hubungi kami sekarang dan jadikan teknologi sebagai penggerak pertumbuhan bisnis Anda.</p>
+          <div class="hero-actions">
+            <a class="btn primary" data-bind-text="contact.buttonLabel" href="#contact">Hubungi Kami</a>
+            <a class="btn secondary" href="/admin/" title="CMS (admin)">Buka CMS</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-row">
+            <div class="contact-label">Email</div>
+            <a class="contact-value" data-bind="contact.email" href="mailto:halo@ruangkarya.id">halo@ruangkarya.id</a>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">WhatsApp</div>
+            <a class="contact-value" data-bind="contact.whatsapp" href="#" data-bind-wa>+62 812-3456-7890</a>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">Alamat</div>
+            <div class="contact-value" data-bind="contact.address">Indonesia</div>
+          </div>
+          <div class="contact-note">
+            <span class="dot"></span>
+            <span>Respon cepat di jam kerja.</span>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">© <span id="year"></span> Ruang Karya</div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img class="footer-logo" src="src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="150" height="48" loading="lazy">
+        <div class="muted">© <span id="year"></span> <span data-bind="footer.copyrightName">Ruang Karya Teknologi</span></div>
+      </div>
+      <div class="footer-links" data-bind-footer-links>
+        <a href="#services">Layanan</a>
+        <a href="#products">Produk</a>
+        <a href="#articles">Artikel</a>
+        <a href="#contact">Kontak</a>
+      </div>
+    </div>
   </footer>
 
   <script src="src/js/main.js"></script>

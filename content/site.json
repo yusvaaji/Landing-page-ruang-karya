@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "title": "Ruang Karya Teknologi — Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak",
+    "description": "PT Ruang Karya Teknologi adalah startup teknologi yang berfokus pada pengembangan solusi digital untuk bisnis, UMKM, dan perusahaan yang ingin melakukan transformasi digital secara efektif.",
+    "ogImage": "src/assets/logo-rkt.svg"
+  },
+  "brand": {
+    "companyName": "Ruang Karya Teknologi",
+    "legalName": "PT Ruang Karya Teknologi",
+    "tagline": "Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak",
+    "logoPath": "src/assets/logo-rkt.svg"
+  },
+  "hero": {
+    "headline": "Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak",
+    "subheadline": "Kami membangun website, aplikasi, dan sistem bisnis yang membantu Anda bekerja lebih efisien, tumbuh lebih cepat, dan menciptakan dampak nyata.",
+    "primaryCta": { "label": "Hubungi Kami", "href": "#contact" },
+    "secondaryCta": { "label": "Lihat Layanan", "href": "#services" }
+  },
+  "about": {
+    "title": "Tentang Kami",
+    "paragraphs": [
+      "PT Ruang Karya Teknologi adalah perusahaan startup teknologi yang berfokus pada pengembangan solusi digital untuk bisnis, UMKM, dan perusahaan yang ingin melakukan transformasi digital secara efektif.",
+      "Kami hadir sebagai ruang kolaborasi—tempat bertemunya ide, kreativitas, dan teknologi—untuk melahirkan karya digital yang bernilai, efisien, dan berkelanjutan.",
+      "Kami percaya bahwa teknologi bukan hanya tentang sistem, tetapi tentang menciptakan dampak nyata: meningkatkan efisiensi, mempercepat pertumbuhan, dan membuka peluang baru bagi bisnis.",
+      "Dengan tim berpengalaman di bidang teknologi, bisnis, dan desain, kami berperan sebagai partner strategis, bukan sekadar vendor."
+    ]
+  },
+  "why": {
+    "title": "Mengapa Ruang Karya Teknologi?",
+    "points": [
+      "Berorientasi pada kebutuhan bisnis nyata",
+      "Solusi fleksibel dan scalable",
+      "Pendekatan kolaboratif dan transparan",
+      "Fokus pada hasil dan dampak jangka panjang"
+    ]
+  },
+  "visionMission": {
+    "visionTitle": "Visi Kami",
+    "vision": "Menjadi perusahaan teknologi yang inovatif dan terpercaya dalam menciptakan solusi digital bernilai tinggi untuk mendorong pertumbuhan dan transformasi di era digital.",
+    "missionTitle": "Misi Kami",
+    "missions": [
+      "Mengembangkan solusi teknologi yang kreatif, relevan, dan berorientasi pada pengguna",
+      "Menjadi ruang kolaborasi bagi talenta dan mitra untuk menghasilkan karya digital berkualitas",
+      "Mendorong pemanfaatan teknologi untuk meningkatkan efisiensi dan daya saing bisnis",
+      "Menjaga profesionalisme, integritas, dan keberlanjutan dalam setiap proses dan hasil karya"
+    ]
+  },
+  "values": {
+    "title": "Nilai-Nilai Kami (Core Values)",
+    "items": [
+      { "name": "Innovation", "description": "Terus menciptakan solusi baru yang adaptif terhadap perubahan." },
+      { "name": "Collaboration", "description": "Membangun sinergi kuat dengan tim, klien, dan mitra." },
+      { "name": "Excellence", "description": "Fokus pada kualitas, performa, dan hasil terbaik." },
+      { "name": "Integrity", "description": "Menjunjung tinggi etika, transparansi, dan kepercayaan." },
+      { "name": "Impact", "description": "Menghasilkan karya yang memberi manfaat nyata bagi bisnis dan masyarakat." }
+    ]
+  },
+  "services": {
+    "title": "Produk & Layanan Kami",
+    "items": [
+      {
+        "title": "Web & Application Development",
+        "description": "Kami membangun website dan aplikasi modern yang cepat, aman, dan responsif, disesuaikan dengan kebutuhan bisnis Anda.",
+        "bullets": ["Company profile", "Sistem internal perusahaan", "Aplikasi bisnis & startup"]
+      },
+      {
+        "title": "Business System & Automation",
+        "description": "Optimalkan proses bisnis dengan sistem digital yang terintegrasi.",
+        "bullets": ["CRM & Sales System", "Dashboard & Reporting", "ERP sederhana untuk UMKM"]
+      },
+      {
+        "title": "Digital Growth & Optimization",
+        "description": "Pendekatan berbasis data untuk membantu bisnis Anda tumbuh secara berkelanjutan.",
+        "bullets": ["SEO & website optimization", "Digital funnel & customer journey", "Analisis performa bisnis"]
+      }
+    ]
+  },
+  "products": {
+    "title": "Produk Unggulan",
+    "items": [
+      {
+        "title": "Karya CRM",
+        "description": "Sistem manajemen pelanggan berbasis cloud untuk meningkatkan produktivitas tim sales dan customer service.",
+        "bullets": ["Data pelanggan terpusat", "Monitoring pipeline penjualan", "Laporan performa real-time"]
+      },
+      {
+        "title": "Karya POS",
+        "description": "Aplikasi kasir digital untuk UMKM dan retail.",
+        "bullets": ["Pencatatan transaksi otomatis", "Manajemen stok", "Laporan keuangan sederhana"]
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Testimoni Klien",
+    "items": [
+      {
+        "quote": "“Tim Ruang Karya sangat responsif dan kolaboratif. Sistem yang dibangun membantu operasional kami jadi jauh lebih rapi.”",
+        "name": "Nama Klien",
+        "role": "Jabatan / Perusahaan"
+      }
+    ],
+    "note": "Bagian ini bisa diisi dengan kutipan klien, logo perusahaan, atau studi kasus singkat."
+  },
+  "articles": {
+    "title": "Artikel & Insight",
+    "subtitle": "Temukan artikel, insight, dan panduan seputar teknologi, bisnis, dan transformasi digital dari tim Ruang Karya Teknologi.",
+    "items": [
+      {
+        "title": "Transformasi Digital untuk UMKM: Mulai dari Mana?",
+        "excerpt": "Panduan ringkas menentukan prioritas digitalisasi yang realistis dan berdampak.",
+        "href": "#"
+      },
+      {
+        "title": "Membangun Sistem CRM: Fitur Wajib untuk Tim Sales",
+        "excerpt": "Fokus pada pipeline, data terpusat, dan laporan yang bisa dieksekusi.",
+        "href": "#"
+      },
+      {
+        "title": "Website Cepat = Konversi Naik: Checklist Optimasi",
+        "excerpt": "Mulai dari performa, SEO, hingga pengalaman pengguna.",
+        "href": "#"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Siap Berkolaborasi dengan Kami?",
+    "subtitle": "Mari wujudkan solusi digital yang tepat untuk bisnis Anda.",
+    "ctaText": "Hubungi kami sekarang dan jadikan teknologi sebagai penggerak pertumbuhan bisnis Anda.",
+    "buttonLabel": "Hubungi Kami",
+    "email": "halo@ruangkarya.id",
+    "whatsapp": "+62 812-3456-7890",
+    "address": "Indonesia"
+  },
+  "footer": {
+    "copyrightName": "Ruang Karya Teknologi",
+    "links": [
+      { "label": "Layanan", "href": "#services" },
+      { "label": "Produk", "href": "#products" },
+      { "label": "Artikel", "href": "#articles" },
+      { "label": "Kontak", "href": "#contact" }
+    ]
+  }
+}
