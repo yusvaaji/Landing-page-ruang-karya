@@ -1,0 +1,13 @@
+:root { --bg: #fff; --accent:#007bff; --text:#222; }
+*{box-sizing:border-box}
+body{font-family:Segoe UI,Arial,Helvetica,sans-serif;margin:0;color:var(--text);background:var(--bg)}
+.container{max-width:1100px;margin:0 auto;padding:1rem}
+.site-header{background:#fff;border-bottom:1px solid #eee}
+.site-header .container{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem}
+.logo{font-weight:700;text-decoration:none;color:var(--text)}
+.nav a{margin-left:1rem;text-decoration:none;color:var(--text)}
+.hero{padding:4rem 1rem;text-align:center;background:linear-gradient(135deg,#f5f7ff,#fff)}
+.btn{display:inline-block;padding:.75rem 1.25rem;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none;margin-top:1rem}
+.services,.about,.contact{padding:2rem 1rem}
+main h1,h2{margin:0 0 .75rem}
+.site-footer{padding:1rem;text-align:center;border-top:1px solid #eee;font-size:.9rem}
