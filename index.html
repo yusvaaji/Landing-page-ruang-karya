@@ -1,263 +1,362 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0b2a42">
-  <meta name="description" content="PT Ruang Karya Teknologi adalah startup teknologi yang berfokus pada pengembangan solusi digital untuk bisnis, UMKM, dan perusahaan yang ingin melakukan transformasi digital secara efektif.">
+  <meta name="theme-color" content="#0b2a42" />
+  <meta name="description" content="PT Ruang Karya Teknologi adalah startup teknologi yang berfokus pada pengembangan solusi digital untuk bisnis, UMKM, dan perusahaan yang ingin melakukan transformasi digital secara efektif." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ruang Karya Teknologi" />
+  <meta property="og:description" content="Solusi digital untuk bisnis yang tumbuh dan berdampak." />
+  <meta property="og:image" content="/src/assets/logo-rkt.svg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ruang Karya Teknologi" />
+  <meta name="twitter:description" content="Solusi digital untuk bisnis yang tumbuh dan berdampak." />
+  <meta name="twitter:image" content="/src/assets/logo-rkt.svg" />
+
+  <link rel="canonical" href="https://ruangkarya.id/" />
+
   <title>Ruang Karya Teknologi — Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak</title>
-  <link rel="stylesheet" href="src/css/style.css">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#071726",
+            navy: "#0b2a42",
+            deep: "#081c2d",
+            sky: "#8fd7ff",
+            glow: "#4dc3ff"
+          },
+          boxShadow: {
+            glow: "0 0 0 1px rgba(143,215,255,.22), 0 0 40px rgba(77,195,255,.18)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* minimal custom (for futuristic animated orbs/grid) */
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(143,215,255,.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(143,215,255,.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      background-position: center;
+      mask-image: radial-gradient(closest-side, rgba(0,0,0,.92), rgba(0,0,0,0));
+      -webkit-mask-image: radial-gradient(closest-side, rgba(0,0,0,.92), rgba(0,0,0,0));
+    }
+    @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-14px) } }
+    .orb { animation: floaty 7s ease-in-out infinite; }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Lewati ke konten</a>
+  <!-- SEO: JSON-LD injected/updated by main.js as well -->
+  <script type="application/ld+json" id="ld-org">
+    {"@context":"https://schema.org","@type":"Organization","name":"Ruang Karya Teknologi","url":"https://ruangkarya.id/","logo":"https://ruangkarya.id/src/assets/logo-rkt.svg"}
+  </script>
+  <script type="application/ld+json" id="ld-website">
+    {"@context":"https://schema.org","@type":"WebSite","name":"Ruang Karya Teknologi","url":"https://ruangkarya.id/"}
+  </script>
 
-  <header class="site-header" data-elevate>
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Ruang Karya Teknologi">
-        <img class="brand-logo" src="src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="170" height="54" loading="eager">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:left-4 focus:top-4 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-navy focus:shadow" href="#main">Lewati ke konten</a>
+
+  <header class="sticky top-0 z-50 border-b border-sky/10 bg-deep/70 backdrop-blur supports-[backdrop-filter]:bg-deep/60">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <a class="flex items-center gap-3" href="#top" aria-label="Ruang Karya Teknologi">
+        <img class="h-10 w-auto" src="src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="170" height="54" loading="eager" />
       </a>
 
-      <button class="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <button id="navToggle" class="inline-flex items-center justify-center rounded-xl border border-sky/15 bg-white/5 px-3 py-2 text-white md:hidden" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Menu</span>
+        <span class="h-0.5 w-5 bg-white"></span>
+        <span class="ml-1 h-0.5 w-5 bg-white opacity-70"></span>
       </button>
 
-      <nav id="site-nav" class="nav" aria-label="Navigasi utama">
-        <a href="#about">Tentang</a>
-        <a href="#services">Layanan</a>
-        <a href="#products">Produk</a>
-        <a href="#values">Nilai</a>
-        <a href="#articles">Artikel</a>
-        <a class="nav-cta" href="#contact">Hubungi</a>
+      <nav id="site-nav" class="hidden items-center gap-6 text-sm text-white/80 md:flex" aria-label="Navigasi utama">
+        <a class="hover:text-white" href="#about">Tentang</a>
+        <a class="hover:text-white" href="#services">Layanan</a>
+        <a class="hover:text-white" href="#products">Produk</a>
+        <a class="hover:text-white" href="#values">Nilai</a>
+        <a class="hover:text-white" href="#articles">Artikel</a>
+        <a class="rounded-xl bg-sky px-4 py-2 font-semibold text-navy shadow-glow hover:brightness-110" href="#contact">Hubungi</a>
+      </nav>
+    </div>
+
+    <!-- mobile menu -->
+    <div id="navMobile" class="hidden border-t border-sky/10 bg-deep/80 px-4 py-4 md:hidden">
+      <nav class="flex flex-col gap-3 text-sm text-white/85" aria-label="Navigasi mobile">
+        <a class="hover:text-white" href="#about">Tentang</a>
+        <a class="hover:text-white" href="#services">Layanan</a>
+        <a class="hover:text-white" href="#products">Produk</a>
+        <a class="hover:text-white" href="#values">Nilai</a>
+        <a class="hover:text-white" href="#articles">Artikel</a>
+        <a class="mt-2 rounded-xl bg-sky px-4 py-2 text-center font-semibold text-navy shadow-glow" href="#contact">Hubungi</a>
       </nav>
     </div>
   </header>
 
-  <main id="main">
-    <section id="top" class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow" data-bind="brand.companyName">Ruang Karya Teknologi</p>
-          <h1 class="hero-title" data-bind="hero.headline">Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak</h1>
-          <p class="hero-subtitle" data-bind="hero.subheadline">
+  <main id="main" class="bg-ink text-white">
+    <section id="top" class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-ink via-deep to-navy"></div>
+      <div class="absolute inset-0 bg-grid opacity-80"></div>
+      <div class="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-sky/20 blur-3xl orb"></div>
+      <div class="pointer-events-none absolute -right-24 top-10 h-80 w-80 rounded-full bg-glow/15 blur-3xl orb" style="animation-delay: 1.2s;"></div>
+
+      <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-16 md:grid-cols-2 md:pb-24 md:pt-24">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full border border-sky/15 bg-white/5 px-4 py-2 text-xs font-medium text-white/80">
+            <span class="h-2 w-2 rounded-full bg-sky shadow-glow"></span>
+            <span data-bind="brand.companyName">Ruang Karya Teknologi</span>
+          </p>
+          <h1 class="mt-5 text-4xl font-extrabold tracking-tight md:text-5xl" data-bind="hero.headline">
+            Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak
+          </h1>
+          <p class="mt-4 max-w-xl text-base leading-relaxed text-white/75 md:text-lg" data-bind="hero.subheadline">
             Kami membangun website, aplikasi, dan sistem bisnis yang membantu Anda bekerja lebih efisien, tumbuh lebih cepat, dan menciptakan dampak nyata.
           </p>
-          <div class="hero-actions">
-            <a class="btn primary" data-bind-href="hero.primaryCta.href" data-bind-text="hero.primaryCta.label" href="#contact">Hubungi Kami</a>
-            <a class="btn secondary" data-bind-href="hero.secondaryCta.href" data-bind-text="hero.secondaryCta.label" href="#services">Lihat Layanan</a>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a class="inline-flex items-center justify-center rounded-2xl bg-sky px-6 py-3 font-semibold text-navy shadow-glow hover:brightness-110" data-bind-href="hero.primaryCta.href" data-bind-text="hero.primaryCta.label" href="#contact">
+              Hubungi Kami
+            </a>
+            <a class="inline-flex items-center justify-center rounded-2xl border border-sky/20 bg-white/5 px-6 py-3 font-semibold text-white/90 hover:bg-white/10" data-bind-href="hero.secondaryCta.href" data-bind-text="hero.secondaryCta.label" href="#services">
+              Lihat Layanan
+            </a>
           </div>
-          <div class="hero-highlights" aria-label="Highlight">
-            <div class="mini-card">
-              <div class="mini-card-title">Efisiensi</div>
-              <div class="mini-card-desc">Otomasi & sistem terintegrasi</div>
+
+          <dl class="mt-10 grid grid-cols-3 gap-3">
+            <div class="rounded-2xl border border-sky/10 bg-white/5 p-4">
+              <dt class="text-xs text-white/60">Fokus</dt>
+              <dd class="mt-1 text-sm font-semibold">Efisiensi</dd>
             </div>
-            <div class="mini-card">
-              <div class="mini-card-title">Pertumbuhan</div>
-              <div class="mini-card-desc">Optimasi berbasis data</div>
+            <div class="rounded-2xl border border-sky/10 bg-white/5 p-4">
+              <dt class="text-xs text-white/60">Outcome</dt>
+              <dd class="mt-1 text-sm font-semibold">Pertumbuhan</dd>
             </div>
-            <div class="mini-card">
-              <div class="mini-card-title">Dampak</div>
-              <div class="mini-card-desc">Solusi yang bisa dieksekusi</div>
+            <div class="rounded-2xl border border-sky/10 bg-white/5 p-4">
+              <dt class="text-xs text-white/60">Nilai</dt>
+              <dd class="mt-1 text-sm font-semibold">Dampak</dd>
             </div>
-          </div>
+          </dl>
         </div>
 
-        <div class="hero-art" aria-hidden="true">
-          <div class="grid-card">
-            <div class="grid-card-badge">Kolaborasi • Kreatif • Teknologi</div>
-            <div class="grid-card-title" data-bind="brand.tagline">Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak</div>
-            <div class="grid-card-kpis">
-              <div class="kpi">
-                <div class="kpi-num">Web</div>
-                <div class="kpi-label">Company profile & app</div>
+        <div class="relative">
+          <div class="absolute -inset-6 rounded-[32px] bg-gradient-to-tr from-sky/25 via-white/5 to-glow/10 blur-2xl"></div>
+          <div class="relative rounded-[28px] border border-sky/15 bg-white/5 p-6 shadow-glow backdrop-blur">
+            <div class="flex items-center justify-between gap-3">
+              <div class="text-xs font-semibold text-white/75">Kolaborasi • Kreatif • Teknologi</div>
+              <div class="rounded-full border border-sky/15 bg-deep/40 px-3 py-1 text-[11px] text-white/70">Startup Tech</div>
+            </div>
+            <div class="mt-4 text-xl font-bold leading-snug" data-bind="brand.tagline">
+              Solusi Digital untuk Bisnis yang Tumbuh dan Berdampak
+            </div>
+            <div class="mt-6 grid grid-cols-3 gap-3 text-center">
+              <div class="rounded-2xl border border-sky/10 bg-deep/30 p-4">
+                <div class="text-sm font-extrabold text-sky">Web</div>
+                <div class="mt-1 text-xs text-white/65">Company profile & app</div>
               </div>
-              <div class="kpi">
-                <div class="kpi-num">CRM</div>
-                <div class="kpi-label">Sales & customer service</div>
+              <div class="rounded-2xl border border-sky/10 bg-deep/30 p-4">
+                <div class="text-sm font-extrabold text-sky">CRM</div>
+                <div class="mt-1 text-xs text-white/65">Sales & service</div>
               </div>
-              <div class="kpi">
-                <div class="kpi-num">POS</div>
-                <div class="kpi-label">UMKM & retail</div>
+              <div class="rounded-2xl border border-sky/10 bg-deep/30 p-4">
+                <div class="text-sm font-extrabold text-sky">POS</div>
+                <div class="mt-1 text-xs text-white/65">UMKM & retail</div>
               </div>
             </div>
+            <div class="mt-6 flex items-center justify-between gap-3 rounded-2xl border border-sky/10 bg-deep/30 p-4 text-xs text-white/70">
+              <span>Keamanan • Performa • Skalabilitas</span>
+              <span class="text-sky">RKT</span>
+            </div>
           </div>
-          <div class="pattern-squares"></div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="container split">
-        <div>
-          <h2 class="section-title" data-bind="about.title">Tentang Kami</h2>
-          <div class="prose" data-bind-list="about.paragraphs">
+    <section id="about" class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="md:col-span-2">
+          <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="about.title">Tentang Kami</h2>
+          <div class="mt-5 space-y-4 text-white/75" data-bind-list="about.paragraphs">
             <p>PT Ruang Karya Teknologi adalah perusahaan startup teknologi yang berfokus pada pengembangan solusi digital untuk bisnis, UMKM, dan perusahaan yang ingin melakukan transformasi digital secara efektif.</p>
           </div>
         </div>
-        <aside class="aside-card">
-          <div class="aside-title" data-bind="why.title">Mengapa Ruang Karya Teknologi?</div>
-          <ul class="checklist" data-bind-list="why.points">
-            <li>Berorientasi pada kebutuhan bisnis nyata</li>
-            <li>Solusi fleksibel dan scalable</li>
-            <li>Pendekatan kolaboratif dan transparan</li>
-            <li>Fokus pada hasil dan dampak jangka panjang</li>
+        <aside class="rounded-[28px] border border-sky/12 bg-white/5 p-6 backdrop-blur">
+          <div class="text-base font-bold" data-bind="why.title">Mengapa Ruang Karya Teknologi?</div>
+          <ul class="mt-4 space-y-3 text-sm text-white/75" data-bind-list="why.points">
+            <li class="flex gap-3"><span class="mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-sky/15 text-sky">✓</span><span>Berorientasi pada kebutuhan bisnis nyata</span></li>
+            <li class="flex gap-3"><span class="mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-sky/15 text-sky">✓</span><span>Solusi fleksibel dan scalable</span></li>
+            <li class="flex gap-3"><span class="mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-sky/15 text-sky">✓</span><span>Pendekatan kolaboratif dan transparan</span></li>
+            <li class="flex gap-3"><span class="mt-1 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-sky/15 text-sky">✓</span><span>Fokus pada hasil dan dampak jangka panjang</span></li>
           </ul>
         </aside>
       </div>
     </section>
 
-    <section class="section alt">
-      <div class="container grid-2">
-        <div class="card">
-          <h3 class="card-title" data-bind="visionMission.visionTitle">Visi Kami</h3>
-          <p class="card-text" data-bind="visionMission.vision">
+    <section class="border-y border-sky/10 bg-deep/40">
+      <div class="mx-auto grid max-w-6xl gap-6 px-4 py-16 md:grid-cols-2 md:py-20">
+        <div class="rounded-[28px] border border-sky/12 bg-white/5 p-7 backdrop-blur">
+          <h3 class="text-lg font-bold" data-bind="visionMission.visionTitle">Visi Kami</h3>
+          <p class="mt-3 text-white/75" data-bind="visionMission.vision">
             Menjadi perusahaan teknologi yang inovatif dan terpercaya dalam menciptakan solusi digital bernilai tinggi untuk mendorong pertumbuhan dan transformasi di era digital.
           </p>
         </div>
-        <div class="card">
-          <h3 class="card-title" data-bind="visionMission.missionTitle">Misi Kami</h3>
-          <ul class="bullet" data-bind-list="visionMission.missions">
+        <div class="rounded-[28px] border border-sky/12 bg-white/5 p-7 backdrop-blur">
+          <h3 class="text-lg font-bold" data-bind="visionMission.missionTitle">Misi Kami</h3>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-white/75" data-bind-list="visionMission.missions">
             <li>Mengembangkan solusi teknologi yang kreatif, relevan, dan berorientasi pada pengguna</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="values" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title" data-bind="values.title">Nilai-Nilai Kami (Core Values)</h2>
+    <section id="values" class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="values.title">Nilai-Nilai Kami (Core Values)</h2>
+          <p class="mt-2 text-sm text-white/65">Prinsip yang menjaga kualitas, kepercayaan, dan dampak karya kami.</p>
         </div>
-        <div class="cards" data-bind-cards="values.items">
-          <article class="card">
-            <div class="pill">Innovation</div>
-            <p class="card-text">Terus menciptakan solusi baru yang adaptif terhadap perubahan.</p>
-          </article>
-        </div>
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-3" data-bind-cards="values.items">
+        <article class="rounded-[26px] border border-sky/12 bg-white/5 p-6 backdrop-blur">
+          <div class="inline-flex items-center gap-2 rounded-full border border-sky/15 bg-deep/30 px-3 py-1 text-xs font-semibold text-sky">Innovation</div>
+          <p class="mt-3 text-sm text-white/75">Terus menciptakan solusi baru yang adaptif terhadap perubahan.</p>
+        </article>
       </div>
     </section>
 
-    <section id="services" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title" data-bind="services.title">Produk & Layanan Kami</h2>
-          <p class="section-subtitle">
+    <section id="services" class="border-y border-sky/10 bg-deep/40">
+      <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <div class="max-w-2xl">
+          <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="services.title">Produk & Layanan Kami</h2>
+          <p class="mt-2 text-white/70">
             Dari website hingga sistem internal—kami bantu Anda membangun fondasi digital yang rapi dan siap berkembang.
           </p>
         </div>
-        <div class="cards" data-bind-services="services.items">
-          <article class="card">
-            <h3 class="card-title">Web & Application Development</h3>
-            <p class="card-text">Kami membangun website dan aplikasi modern yang cepat, aman, dan responsif, disesuaikan dengan kebutuhan bisnis Anda.</p>
-            <ul class="bullet">
-              <li>Company profile</li>
-              <li>Sistem internal perusahaan</li>
-              <li>Aplikasi bisnis & startup</li>
+        <div class="mt-8 grid gap-4 md:grid-cols-3" data-bind-services="services.items">
+          <article class="rounded-[26px] border border-sky/12 bg-white/5 p-6 backdrop-blur">
+            <h3 class="text-base font-bold">Web & Application Development</h3>
+            <p class="mt-2 text-sm text-white/75">
+              Kami membangun website dan aplikasi modern yang cepat, aman, dan responsif, disesuaikan dengan kebutuhan bisnis Anda.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-white/70">
+              <li class="flex gap-2"><span class="text-sky">•</span><span>Company profile</span></li>
+              <li class="flex gap-2"><span class="text-sky">•</span><span>Sistem internal perusahaan</span></li>
+              <li class="flex gap-2"><span class="text-sky">•</span><span>Aplikasi bisnis & startup</span></li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="products" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title" data-bind="products.title">Produk Unggulan</h2>
-          <p class="section-subtitle">Produk siap pakai yang bisa dikustom sesuai alur kerja bisnis Anda.</p>
-        </div>
-        <div class="cards" data-bind-products="products.items">
-          <article class="card featured">
-            <div class="card-top">
-              <h3 class="card-title">Karya CRM</h3>
-              <span class="chip">Cloud</span>
-            </div>
-            <p class="card-text">Sistem manajemen pelanggan berbasis cloud untuk meningkatkan produktivitas tim sales dan customer service.</p>
-            <ul class="bullet">
-              <li>Data pelanggan terpusat</li>
-              <li>Monitoring pipeline penjualan</li>
-              <li>Laporan performa real-time</li>
-            </ul>
-          </article>
-        </div>
+    <section id="products" class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="products.title">Produk Unggulan</h2>
+        <p class="mt-2 text-white/70">Produk siap pakai yang bisa dikustom sesuai alur kerja bisnis Anda.</p>
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-2" data-bind-products="products.items">
+        <article class="relative overflow-hidden rounded-[28px] border border-sky/12 bg-white/5 p-7 backdrop-blur">
+          <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-sky/15 blur-2xl"></div>
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="text-lg font-bold">Karya CRM</h3>
+            <span class="rounded-full border border-sky/15 bg-deep/30 px-3 py-1 text-xs font-semibold text-white/75">Cloud</span>
+          </div>
+          <p class="mt-3 text-sm text-white/75">
+            Sistem manajemen pelanggan berbasis cloud untuk meningkatkan produktivitas tim sales dan customer service.
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-white/70">
+            <li class="flex gap-2"><span class="text-sky">•</span><span>Data pelanggan terpusat</span></li>
+            <li class="flex gap-2"><span class="text-sky">•</span><span>Monitoring pipeline penjualan</span></li>
+            <li class="flex gap-2"><span class="text-sky">•</span><span>Laporan performa real-time</span></li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title" data-bind="testimonials.title">Testimoni Klien</h2>
-          <p class="section-subtitle" data-bind="testimonials.note">Bagian ini bisa diisi dengan kutipan klien, logo perusahaan, atau studi kasus singkat.</p>
+    <section class="border-y border-sky/10 bg-deep/40">
+      <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <div class="max-w-2xl">
+          <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="testimonials.title">Testimoni Klien</h2>
+          <p class="mt-2 text-white/70" data-bind="testimonials.note">Bagian ini bisa diisi dengan kutipan klien, logo perusahaan, atau studi kasus singkat.</p>
         </div>
-        <div class="quotes" data-bind-testimonials="testimonials.items">
-          <figure class="quote">
-            <blockquote>“Tim Ruang Karya sangat responsif dan kolaboratif. Sistem yang dibangun membantu operasional kami jadi jauh lebih rapi.”</blockquote>
-            <figcaption>— Nama Klien, Jabatan / Perusahaan</figcaption>
+        <div class="mt-8 grid gap-4 md:grid-cols-2" data-bind-testimonials="testimonials.items">
+          <figure class="rounded-[28px] border border-sky/12 bg-white/5 p-7 backdrop-blur">
+            <blockquote class="text-white/80">“Tim Ruang Karya sangat responsif dan kolaboratif. Sistem yang dibangun membantu operasional kami jadi jauh lebih rapi.”</blockquote>
+            <figcaption class="mt-4 text-sm text-white/60">— Nama Klien, Jabatan / Perusahaan</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <section id="articles" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title" data-bind="articles.title">Artikel & Insight</h2>
-          <p class="section-subtitle" data-bind="articles.subtitle">
-            Temukan artikel, insight, dan panduan seputar teknologi, bisnis, dan transformasi digital dari tim Ruang Karya Teknologi.
-          </p>
-        </div>
-        <div class="cards" data-bind-articles="articles.items">
-          <article class="card link-card">
-            <h3 class="card-title">Transformasi Digital untuk UMKM: Mulai dari Mana?</h3>
-            <p class="card-text">Panduan ringkas menentukan prioritas digitalisasi yang realistis dan berdampak.</p>
-            <a class="card-link" href="#">Baca →</a>
-          </article>
-        </div>
+    <section id="articles" class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="articles.title">Artikel & Insight</h2>
+        <p class="mt-2 text-white/70" data-bind="articles.subtitle">
+          Temukan artikel, insight, dan panduan seputar teknologi, bisnis, dan transformasi digital dari tim Ruang Karya Teknologi.
+        </p>
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-3" data-bind-articles="articles.items">
+        <article class="group rounded-[26px] border border-sky/12 bg-white/5 p-6 backdrop-blur">
+          <h3 class="text-base font-bold">Transformasi Digital untuk UMKM: Mulai dari Mana?</h3>
+          <p class="mt-2 text-sm text-white/75">Panduan ringkas menentukan prioritas digitalisasi yang realistis dan berdampak.</p>
+          <a class="mt-4 inline-flex text-sm font-semibold text-sky group-hover:brightness-110" href="#">Baca →</a>
+        </article>
       </div>
     </section>
 
-    <section id="contact" class="section contact">
-      <div class="container contact-inner">
+    <section id="contact" class="relative overflow-hidden border-t border-sky/10 bg-gradient-to-b from-deep/50 to-ink">
+      <div class="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-sky/15 blur-3xl orb" style="animation-delay: 0.6s;"></div>
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-16 md:grid-cols-2 md:py-20">
         <div>
-          <h2 class="section-title" data-bind="contact.title">Siap Berkolaborasi dengan Kami?</h2>
-          <p class="section-subtitle" data-bind="contact.subtitle">Mari wujudkan solusi digital yang tepat untuk bisnis Anda.</p>
-          <p class="prose" data-bind="contact.ctaText">Hubungi kami sekarang dan jadikan teknologi sebagai penggerak pertumbuhan bisnis Anda.</p>
-          <div class="hero-actions">
-            <a class="btn primary" data-bind-text="contact.buttonLabel" href="#contact">Hubungi Kami</a>
-            <a class="btn secondary" href="/admin/" title="CMS (admin)">Buka CMS</a>
+          <h2 class="text-2xl font-extrabold tracking-tight md:text-3xl" data-bind="contact.title">Siap Berkolaborasi dengan Kami?</h2>
+          <p class="mt-2 text-white/70" data-bind="contact.subtitle">Mari wujudkan solusi digital yang tepat untuk bisnis Anda.</p>
+          <p class="mt-4 text-white/75" data-bind="contact.ctaText">Hubungi kami sekarang dan jadikan teknologi sebagai penggerak pertumbuhan bisnis Anda.</p>
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+            <a class="inline-flex items-center justify-center rounded-2xl bg-sky px-6 py-3 font-semibold text-navy shadow-glow hover:brightness-110" data-bind-text="contact.buttonLabel" href="#contact">Hubungi Kami</a>
+            <a class="inline-flex items-center justify-center rounded-2xl border border-sky/20 bg-white/5 px-6 py-3 font-semibold text-white/90 hover:bg-white/10" href="/admin/" title="CMS (admin)">Buka CMS</a>
           </div>
+          <p class="mt-4 text-xs text-white/55">Catatan: CMS membutuhkan setup backend Git (Netlify/Git Gateway atau GitHub OAuth).</p>
         </div>
-        <div class="contact-card">
-          <div class="contact-row">
-            <div class="contact-label">Email</div>
-            <a class="contact-value" data-bind="contact.email" href="mailto:halo@ruangkarya.id">halo@ruangkarya.id</a>
+        <div class="rounded-[28px] border border-sky/12 bg-white/5 p-7 backdrop-blur">
+          <div class="space-y-4 text-sm">
+            <div class="flex items-start justify-between gap-3 border-b border-sky/10 pb-4">
+              <div class="text-white/55">Email</div>
+              <a class="font-semibold text-sky hover:brightness-110" data-bind="contact.email" href="mailto:halo@ruangkarya.id">halo@ruangkarya.id</a>
+            </div>
+            <div class="flex items-start justify-between gap-3 border-b border-sky/10 pb-4">
+              <div class="text-white/55">WhatsApp</div>
+              <a class="font-semibold text-sky hover:brightness-110" data-bind="contact.whatsapp" href="#" data-bind-wa>+62 812-3456-7890</a>
+            </div>
+            <div class="flex items-start justify-between gap-3">
+              <div class="text-white/55">Alamat</div>
+              <div class="text-right font-medium text-white/80" data-bind="contact.address">Indonesia</div>
+            </div>
           </div>
-          <div class="contact-row">
-            <div class="contact-label">WhatsApp</div>
-            <a class="contact-value" data-bind="contact.whatsapp" href="#" data-bind-wa>+62 812-3456-7890</a>
-          </div>
-          <div class="contact-row">
-            <div class="contact-label">Alamat</div>
-            <div class="contact-value" data-bind="contact.address">Indonesia</div>
-          </div>
-          <div class="contact-note">
-            <span class="dot"></span>
-            <span>Respon cepat di jam kerja.</span>
+          <div class="mt-6 rounded-2xl border border-sky/10 bg-deep/30 p-4 text-xs text-white/65">
+            Respon cepat di jam kerja.
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <img class="footer-logo" src="src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="150" height="48" loading="lazy">
-        <div class="muted">© <span id="year"></span> <span data-bind="footer.copyrightName">Ruang Karya Teknologi</span></div>
+  <footer class="border-t border-sky/10 bg-ink">
+    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 md:flex-row md:items-center md:justify-between">
+      <div class="flex items-center gap-4">
+        <img class="h-10 w-auto opacity-95" src="src/assets/logo-rkt.svg" alt="Ruang Karya Teknologi" width="150" height="48" loading="lazy" />
+        <div class="text-sm text-white/60">© <span id="year"></span> <span data-bind="footer.copyrightName">Ruang Karya Teknologi</span></div>
       </div>
-      <div class="footer-links" data-bind-footer-links>
-        <a href="#services">Layanan</a>
-        <a href="#products">Produk</a>
-        <a href="#articles">Artikel</a>
-        <a href="#contact">Kontak</a>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70" data-bind-footer-links>
+        <a class="hover:text-white" href="#services">Layanan</a>
+        <a class="hover:text-white" href="#products">Produk</a>
+        <a class="hover:text-white" href="#articles">Artikel</a>
+        <a class="hover:text-white" href="#contact">Kontak</a>
       </div>
     </div>
   </footer>
